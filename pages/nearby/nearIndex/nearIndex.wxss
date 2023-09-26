@@ -1,0 +1,38 @@
+/* pages/nearby/nearIndex/nearIndex.wxss */
+.nearCont {
+  width: 100%;
+  padding: 0 30rpx 30rpx;
+}
+.storeItem {
+  width: 100%;
+  min-height: 275rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  padding: 27rpx 30rpx 30rpx;
+}
+.storeLine1 {
+  width: 100%;
+  min-height: 45rpx;
+  margin-bottom: 2rpx;
+}
+.storeLine3 {
+  width: 100%;
+  height: 114rpx;
+  margin-top: 20rpx;
+  padding: 20rpx 30rpx; 
+  background-color: #F5f6f7;
+  border-radius: 10rpx;
+}
+.storeLine3Left {
+  height: 74rpx;
+}
+.sotreBtn {
+  width: 148rpx;
+  height: 53rpx;
+  line-height: 53rpx;
+  text-align: center;
+  background: #0067FF;
+  box-shadow: 0rpx 5rpx 10rpx 0rpx #BADBF4;
+  border-radius: 28rpx;
+}

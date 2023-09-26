@@ -1,0 +1,49 @@
+<!--pages/my/myIndex/myIndex.wxml-->
+<view wx:if="{{online}}" class="hot-container flex_column flex_align_center" style="background: #F5F6F7;">
+  <view class="partTopBack">
+    <image src="../../../resources/images/myBack.png" style="width: 750rpx;height: 602rpx"/>
+  </view>
+  <view class="myContWrap">
+    <view class="myCont">
+      <view class="myPeople">
+        <image src="../../../resources/images/myPeopleBack.png" mode="" class="myPeopleBack"/>
+        <view class="myInfo flex_column flex_align_center flex_justify_start">
+          <view style="height: 169rpx; width: 169rpx; background: #fff; border-radius: 50%;"></view>
+          <view class="fontMedium f38 color333" style="margin-top: 22rpx;line-height: 53rpx;">王富盛</view>
+          <view class="myStatus flex_flex flex_justify_start flex_align_center">
+            <text class="f26 colorMain fontMedium" style="line-height: 26rpx;">离职-随时到岗</text>
+            <image src="../../../resources/images/mydownArrow.png" style="width: 16rpx;height: 16rpx;margin-left: 10rpx"/>
+          </view>
+        </view>
+      </view>
+      <view class="myjobCont">
+        <view class="myList flex_flex flex_justify_between">
+          <view class="myMake flex_flex flex_justify_between flex_align_center" data-type="2" bind:tap="toBook">
+            <view>
+              <view class="f30 colorfff fontMedium" style="margin-bottom: 14rpx;">岗位预约</view>
+              <view class="f34 colorfff fontMedium">14个</view>
+            </view>
+            <image src="../../../resources/images/myMake.png" mode="" class="myImg"/>
+          </view>
+          <view class="myInterview flex_flex flex_justify_between flex_align_center" data-type="3" bind:tap="toBook">
+            <view>
+              <view class="f30 colorfff fontMedium" style="margin-bottom: 14rpx;">我的面试</view>
+              <view class="f34 colorfff fontMedium">0个</view>
+            </view>
+            <image src="../../../resources/images/myInterview.png" mode="" class="myImg"/>
+          </view>
+        </view>
+        <view wx:for="{{choiceList}}" wx:key="index" class="mybotItem flex_flex flex_justify_between flex_align_center">
+          <view class="flex_flex flex_justify_start flex_align_center">
+            <image src="{{item.choiceIcon}}" class="{{'myIcon' + item.id}}" />
+            <text class="{{'f34 color333 fontMedium mytip' + item.id}}">{{item.choiceTitle}}</text>
+          </view>
+          <image src="../../../resources/images/myRightArrow.png" style="width: 24rpx;height: 24rpx;"/>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:else class="tips">
+精彩内容即将上线，敬请期待！
+</view>

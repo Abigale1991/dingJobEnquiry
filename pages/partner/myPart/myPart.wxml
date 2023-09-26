@@ -1,0 +1,40 @@
+<!--pages/partner/myPart/myPart.wxml-->
+<view class="hot-container flex_column flex_align_center">
+  <view class="navbar color333 fontMedium" style='height: {{height + 46}}px; padding-top: {{height}}px;'>
+  <image src="../../../resources/images/nav_back.png" class="navbackImg" mode="" bind:tap="goback"/>
+  岗位详情</view>
+  <view class="cont-contain flex_column">
+    <view class="tabs">
+        <view class="searchBy">
+            <view wx:if="{{inJob}}" class="byFlightNo selected">在职中</view>
+            <view wx:if="{{inJob}}" class="byCityName" bindtap="byCityName">已离职</view>
+            <view wx:if="{{!inJob}}"  class="byFlightNo" bindtap="byFlightNo">在职中</view>
+            <view wx:if="{{!inJob}}"  class="byCityName selected">已离职</view>
+        </view>
+        <view class="showBar">
+            <view animation="{{animationData}}"  class="barSelected"></view>
+        </view>
+    </view>
+    <view class="myJobList">
+      <view wx:for="{{myJobList}}" class="myJobItemWrap">
+        <view class="myJobline1 flex_flex flex_justify_start">
+          <!-- <image src="" mode=""/> -->
+          <view style="width: 84rpx;height: 84rpx;background: #E0E9FD;border-radius: 50%; margin-right: 20rpx"></view>
+          <view>
+            <view class="f32 color333 fontMedium" style="line-height: 45rpx;margin-bottom:2rpx;">汪先生</view>
+            <view class="f26 color999" style="line-height: 37rpx;">54岁 18964529904</view>
+          </view>
+          <view class="myStatus f32 color999 fontMedium" style="line-height: 45rpx;">在职中</view>
+        </view>
+        <view class="myJobline2 flex_flex flex_justify_start flex_align_center" style="margin-bottom: 10rpx;">
+          <image class="myIconline2" src="../../../resources/images/job.png" mode=""/>
+          <text class="f26 color333">岗位：合肥分拣员</text>
+        </view>
+        <view class="myJobline2 flex_flex flex_justify_start flex_align_center">
+          <image class="myIconline2" src="../../../resources/images/house.png" mode=""/>
+          <text class="f26 color333">公司：京东世纪贸易有限公司</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

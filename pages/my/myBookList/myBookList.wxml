@@ -1,0 +1,39 @@
+<!--pages/my/myBookList/myBookList.wxml-->
+<view class="hot-container flex_column flex_align_center">
+  <view class="navbar color333 fontMedium" style='height: {{height + 46}}px; padding-top: {{height}}px;'>
+  <image src="../../../resources/images/nav_back.png" class="navbackImg" mode="" bind:tap="goback"/>
+  岗位预约记录</view>
+  <view class="cont-contain flex_column">
+    <view class="tabs">
+        <view class="searchBy">
+            <view wx:if="{{type==1}}" class="byFlightNo selected">全部</view>
+            <view wx:if="{{type!=1}}" class="byCityName" bindtap="myClick" data-type="1">全部</view>
+            <view wx:if="{{type==2}}"  class="byFlightNo selected">预约中</view>
+            <view wx:if="{{type!=2}}"  class="byCityName" bindtap="myClick" data-type="2">预约中</view>
+            <view wx:if="{{type==3}}"  class="byFlightNo selected">面试</view>
+            <view wx:if="{{type!=3}}"  class="byCityName" bindtap="myClick" data-type="3">面试</view>
+            <view wx:if="{{type==4}}"  class="byFlightNo selected">入职</view>
+            <view wx:if="{{type!=4}}"  class="byCityName" bindtap="myClick" data-type="4">入职</view>
+        </view>
+        <view class="showBar">
+            <view animation="{{animationData}}"  class="barSelected"></view>
+        </view>
+    </view>
+    <view class="myJobList">
+      <view wx:for="{{myJobList}}" class="myJobItemWrap">
+        <view class="myJobline1 flex_flex flex_justify_between">
+          <view class="f34 color333 fontMedium">合肥分拣员</view>
+          <view class="f32 colorMain fontMedium">等待面试</view>
+        </view>
+        <view class="myJobline2 f28 colorMain fontMedium">5700-9000元</view>
+        <view class="myJobline3 flex_flex flex_justify_between flex_align_center">
+          <view class=" flex_flex flex_justify_start flex_align_center">
+            <image class="myIconline2" src="../../../resources/images/job.png" mode=""/>
+            <text class="f26 color333">京东世纪贸易有限公司</text>
+          </view>
+          <view class="f26 color999">2023-07-20</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

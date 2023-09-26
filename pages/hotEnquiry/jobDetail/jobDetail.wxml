@@ -1,0 +1,60 @@
+<!--pages/hotEnquiry/jobDetail/jobDetail.wxml-->
+<view class="topBack">
+</view>
+<view class="hot-container flex_column flex_align_center">
+  <view class="navbar color333 fontMedium" style='height: {{height + 46}}px; padding-top: {{height}}px;'>
+  <image src="../../../resources/images/nav_back.png" class="navbackImg" mode="" bind:tap="goback"/>
+  岗位详情</view>
+  <view class="cont-contain">
+    <view class="datail-cont">
+      <view class="detail-Mid" style="padding-top: 26rpx">
+        <view class="oneLine flex_flex flex_justify_between">
+          <text class="color333 fontMedium f38">{{ jobInfo.jobName }}</text>
+          <text class="colorMain f30 fontMedium">{{jobInfo.salaryMin}}-{{jobInfo.salaryMax}}元</text>
+        </view>
+        <view class="twoLine flex_flex flex_justify_start">
+          <view v-if="jobInfo.areaName" class="flex_flex flex_justify_start flex_align_center" style="margin-right: 30rpx">
+            <image src="../../../resources/images/addr.png" mode="" style="width: 17rpx;height: 22rpx;margin-right: 10rpx"/>
+            <text class="color666 f24" style="line-height: 33rpx;">{{jobInfo.areaName}}</text>
+          </view>
+          <view v-if="jobInfo.ageMin && jobInfo.ageMax" class="flex_flex flex_justify_start flex_align_center">
+            <image src="../../../resources/images/age.png" mode=""  style="width: 22rpx;height: 22rpx;margin-right: 10rpx"/>
+            <text class="color666 f24" style="line-height: 33rpx;">{{jobInfo.ageMin}}-{{jobInfo.ageMax}}岁</text>
+          </view>
+          <!-- <view wx:for="{{jobInfo.featureList}}" class="color666 f24" style="margin-right: 30rpx">{{ item }}</view> -->
+        </view>
+        <view class="line"></view>
+        <view class="threeLine flex_flex flex_justify_between">
+          <view class="applyLeft flex_flex flex_justify_start flex_align_center">
+            <image class="applyIcon" src="{{jobInfo.logaUrl}}" mode="aspectFill"/>
+            <view>
+              <view class="f24 color333" style="line-height: 32rpx;margin-bottom:4rpx;">{{ jobInfo.corporate }}</view>
+              <view class="f24 color999" style="line-height: 28rpx;">{{ jobInfo.addr }}</view>
+            </view>
+            
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="datail-cont">
+      <view class="detail-Mid">
+        <view class="color333 fontMedium f34" style="line-height: 48rpx;margin-bottom: 20rpx;">岗位描述</view>
+        <view><text class="color666 f26" style="line-height: 48rpx;">{{jobInfo.jobDescription}}</text></view>
+      </view>
+    </view>
+    <view class="datail-cont">
+      <view class="detail-Mid">
+        <view class="color333 fontMedium f34" style="line-height: 48rpx;margin-bottom: 20rpx;">厂区图片</view>
+        <view class="flex_flex flex_justify_start pictureList">
+          <view wx:for="{{jobInfo.corporateList}}" wx:key="index" class="corpoPicCont">
+            <image src="{{item.imgUrl}}" mode="" class="corpoPicImg"/>
+            </view>
+        </view>
+      </view>
+    </view>
+    <view class="detail-cont flex_flex flex_justify_around" style="margin-top: 90rpx; margin-bottom: 30rpx;padding: 0 30rpx;">
+      <view class="midBtn colorfff f32 fontMedium" style="background: #0AD47E;">我要推荐</view>
+      <view class="midBtn colorfff f32 fontMedium" style="background: #0067FF;" bind:tap="toBook">我要报名</view>
+    </view>
+  </view>
+</view>

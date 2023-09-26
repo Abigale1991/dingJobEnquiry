@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/hotEnquiry/hotIndex/hotIndex",
+    "pages/partner/partIndex/partIndex",
+    "pages/nearby/nearIndex/nearIndex",
+    "pages/my/myIndex/myIndex",
+    "pages/hotEnquiry/jobDetail/jobDetail",
+    "pages/hotEnquiry/toBook/toBook",
+    "pages/partner/myPart/myPart",
+    "pages/my/myBookList/myBookList"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "人力资源产业园",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#B3B3B3",
+    "selectedColor": "#0067FF",
+    "backgroundColor": "#FFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/hotEnquiry/hotIndex/hotIndex",
+        "iconPath": "resources/images/hotIcon.png",
+        "selectedIconPath": "resources/images/hotIcon_ac.png",
+        "text": "热招"
+      },
+      {
+        "pagePath": "pages/partner/partIndex/partIndex",
+        "iconPath": "resources/images/part.png",
+        "selectedIconPath": "resources/images/part_ac.png",
+        "text": "合伙人"
+      },{
+        "pagePath": "pages/nearby/nearIndex/nearIndex",
+        "iconPath": "resources/images/near.png",
+        "selectedIconPath": "resources/images/near_ac.png",
+        "text": "附近"
+      },
+      {
+        "pagePath": "pages/my/myIndex/myIndex",
+        "iconPath": "resources/images/my.png",
+        "selectedIconPath": "resources/images/my_ac.png",
+        "text": "我"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

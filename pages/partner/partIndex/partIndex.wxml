@@ -1,0 +1,44 @@
+<!--pages/partner/partIndex/partIndex.wxml-->
+<view wx:if="{{online}}" class="hot-container flex_column flex_align_center" style="background: #061740;">
+  <view class="partTopBack">
+    <image src="../../../resources/images/partBack.png" mode="aspectFill" style="width: 750rpx;height:1454rpx"/>
+  </view>
+  <view class="partCont">
+    <view class="partTopCont">
+      <view class="partTipItemCont" wx:for="{{tipsList}}" wx:key="index">
+        <view class="flex_flex flex_justify_start flex_align_center">
+          <view class="leftImg flex_flex flex_align_center">
+            <view class="imgCont flex_flex flex_justify_center flex_align_center"><image src="{{item.imgUrl}}" class="{{'partImg' + item.id}}"/></view>
+          </view>
+          <view class="partWord color333 f32 fontMedium" style="max-width: 450rpx;">{{item.tipWord}}</view>
+        </view>
+        <!-- <image src="../../../resources" mode=""/> -->
+        <view wx:if="{{item.id < 4 }}"style="padding: 8rpx 29rpx"><view style="height: 50rpx;border-left: 2rpx dashed #333;"></view></view>
+      </view>
+    </view>
+    <view class="blueBtnWrap"><view class="blueBtn f32 colorfff fontMedium" bind:tap="toJoin">加入我们 支付50元</view></view>
+  </view>
+  <view class="bottomCont" wx:if="{{showBottom}}">
+    <!-- style='height: {{joinHeight}}rpx;' -->
+    <image src="../../../resources/images/close.png" mode="" class="close" bind:tap="toClose"/>
+    <view class="toBePart f34 color333 fontMedium">成为合伙人</view>
+    <view class="flex_flex flex_justify_between flex_align_center" style="height: 78rpx; margin-bottom: 32rpx">
+      <text class="f32 color333 fontMedium" style="margin-right: 30rpx">姓名</text>
+      <input type="text" placeholder='请输入姓名' placeholder-class='holder' value='{{name}}'  bindinput="bindInputName"></input>
+    </view>
+    <view class="flex_flex flex_justify_between flex_align_center" style="height: 78rpx; margin-bottom: 32rpx">
+      <text class="f32 color333 fontMedium" style="margin-right: 30rpx">电话</text>
+      <input type="number" placeholder='请输入电话' placeholder-class='holder' value='{{phoneNum}}'  bindinput="bindInputphoneNum"></input>
+    </view>
+    <view class="flex_flex flex_justify_between flex_align_center" style="height: 78rpx; margin-bottom: 32rpx">
+      <text class="f32 color333 fontMedium" style="margin-right: 30rpx">身份证</text>
+      <input type="number" placeholder='请输入身份证' placeholder-class='holder' value='{{idNum}}'  bindinput="bindInputIdNum"></input>
+    </view>
+    <view class="bookBtnWrap">
+      <view class="bookBtn colorfff f32 fontMedium" bind:tap="toBook">50元 立即支付</view>
+    </view>
+  </view>
+</view>
+<view wx:else class="tips">
+精彩内容即将上线，敬请期待！
+</view>

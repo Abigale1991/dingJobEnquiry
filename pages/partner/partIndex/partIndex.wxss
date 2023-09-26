@@ -1,0 +1,113 @@
+/* pages/partner/partIndex/partIndex.wxss */
+.partTopBack {
+  width: 750rpx;
+  height: 100%;
+  z-index: 0;
+}
+.partCont {
+  position: absolute;
+  top: 591rpx;
+  left: 50rpx;
+  width: 650rpx;
+  height: 714rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.partTopCont {
+  width: 100%;
+  padding: 46rpx 50rpx;
+}
+.partTipItemCont {
+  width: 100%;
+}
+.leftImg {
+  width: 87rpx;
+  height: 57rpx;
+}
+.imgCont {
+  width: 57rpx;
+  height: 57rpx;
+}
+.partImg1 {
+  width: 57rpx;
+  height: 50rpx;
+}
+.partImg2 {
+  width: 50rpx;
+  height: 48rpx;
+}
+.partImg3 {
+  width: 47rpx;
+  height: 53rpx;
+}
+.partImg4 {
+  width: 54rpx;
+  height: 54rpx;
+}
+.blueBtnWrap {
+  width: 100%;
+  padding: 20rpx 35rpx 0;
+}
+.blueBtn {
+  width: 580rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background: #0067FF;
+  box-shadow: 0rpx 5rpx 10rpx 0rpx #BADBF4;
+  border-radius: 50rpx;
+}
+.bottomCont {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 750rpx;
+  height: 662rpx;
+  background: #FFF;
+  border-radius: 26rpx 26rpx 0rpx 0rpx;
+  transition: height 500ms;
+  padding: 20rpx 60rpx;
+}
+.close {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 88rpx;
+  height: 88rpx;
+}
+.toBePart {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  margin-bottom: 56rpx;
+}
+.bottomCont input {
+  display: inline-block;
+  height: 78rpx;
+  width: 502rpx;
+  box-sizing: border-box;
+  line-height: 78rpx;
+  font-size: 32rpx;
+  padding: 0 40rpx;
+  background-color: #f5f6f7;
+  border-radius: 39rpx;
+  color: #333;
+}
+.holder {
+  font-size: 32rpx;
+  line-height: 78rpx;
+  color: #999;  
+}
+.bookBtnWrap {
+  width: 100%;
+  padding-top: 14rpx;
+}
+.bookBtn {
+  width: 100%;
+  height: 84rpx;
+  background: #0067FF;
+  border-radius: 42rpx;
+  line-height: 84rpx;
+  text-align: center;
+}

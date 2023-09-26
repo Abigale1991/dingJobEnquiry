@@ -1,0 +1,102 @@
+/* pages/hotEnquiry/hotIndex/hotIndex.wxss */
+/* banner图区域 */
+.waistWrapper {
+  width: 690rpx;
+  height: 224rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.waistSeal_swiper {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.waitItem {
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.waistSealImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.home-contain {
+  width: 100%;
+  padding: 0 20rpx;
+}
+/* 城市导航区域 */
+.home-contain .home-page-tabs {
+  --td-tab-nav-bg-color: transparent;
+  --td-tab-border-color: transparent;
+  --td-tab-item-color: #666;
+  --td-tab-track-color: #0067FF;
+}
+.home-page-tabs .t-tabs .t-tabs_nav {
+  background-color: transparent;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+.home-page-tabs .t-tabs .t-tabs-scroll {
+  border: none !important;
+}
+.home-page-tabs .tabs-external__active {
+  color: #333333 !important;
+  font-size: 32rpx;
+}
+.t-tabs.t-tabs--top .t-tabs__item,
+.t-tabs.t-tabs--bottom .t-tabs__item {
+  height: 80rpx !important;
+}
+/* 职位区域 */
+.jobList-contain {
+  width: 100%;
+  overflow-y: scroll;
+}
+.jobItem {
+  width: 100%;
+  height: 217rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  padding: 30rpx 30rpx 24rpx 30rpx;
+}
+.oneLine {
+  width: 100%;
+  height: 48rpx;
+  line-height: 48rpx;
+  margin-bottom: 14rpx;
+}
+.twoLine {
+  width: 100%;
+  height: 38rpx;
+  line-height: 38rpx;
+  margin-bottom: 10rpx;
+}
+.threeLine {
+  width: 100%;
+  height: 53rpx;
+  line-height: 53rpx;
+}
+.applyLeft {
+  width: 480rpx;
+  height: 53rpx;
+}
+.applyIcon {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+  border-radius: 5rpx;
+}
+.toApply {
+  width: 148rpx;
+  height: 53rpx;
+  background: #0067FF;
+  box-shadow: 0rpx 5rpx 10rpx 0rpx #BADBF4;
+  border-radius: 28rpx;
+  font-weight: 500;
+  text-align: center;
+}
