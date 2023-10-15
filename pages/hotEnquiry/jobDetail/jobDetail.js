@@ -7,7 +7,7 @@ Page({
    */
   data: {
     height: app.globalData.height,
-    jobid: -1,
+    job_id: -1,
     jobInfo: {},
     testinfo: "招聘岗位: 物流分拣员\n工作内容：根据现场安排负责将商品按照订单地址归类"
   },
@@ -16,16 +16,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log("options:", options)
-    if (options.jobid) {
-      this.data.jobid = options.jobid
+    console.log("jobDetail_options:", options)
+    if (options.job_id) {
+      this.data.job_id = options.job_id
       this.getData()
     }
   },
   getData: function() {
-    var data = {job_id: this.data.jobid}
-    util.reqPost("job_info", data).then((res) => {
-      console.log('接到岗位参数：', res)
+    var data = {job_id: this.data.job_id}
+    util.reqGet("job_info", data).then((res) => {
+      console.log('job_info接到岗位参数：', res)
       res.corporateList = [];
       var picList = res.corporatePics.split(',')
       picList.forEach((item) => {
@@ -44,7 +44,7 @@ Page({
   },
   toBook: function() {
     wx.navigateTo({
-      url: '/pages/hotEnquiry/toBook/toBook'
+      url: '/pages/hotEnquiry/toBook/toBook?job_id=' + this.data.job_id
     })
   },
   /**

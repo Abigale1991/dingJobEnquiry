@@ -29,8 +29,8 @@
             wx:for="{{tabList}}"
             wx:for-index="index"
             wx:key="index"
-            label="{{item.text}}"
-            value="{{item.key}}"
+            label="{{item.areaName}}"
+            value="{{item.id}}"
           />
         </t-tabs>
       </view>
@@ -41,7 +41,7 @@
             <text class="colorMain f32 fontMedium">{{item.salaryMin}}-{{item.salaryMax}}元</text>
           </view>
           <view class="twoLine flex_flex flex_justify_start">
-            <view wx:for="{{item.featureList}}" class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">{{ item }}</view>
+            <view wx:for="{{item.featureList}}" wx:key="index" class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">{{ item }}</view>
             <!-- <view class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">早7-晚8</view>
             <view class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">五险一金</view> -->
           </view>

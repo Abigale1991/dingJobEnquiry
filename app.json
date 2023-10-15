@@ -7,7 +7,9 @@
     "pages/hotEnquiry/jobDetail/jobDetail",
     "pages/hotEnquiry/toBook/toBook",
     "pages/partner/myPart/myPart",
-    "pages/my/myBookList/myBookList"
+    "pages/my/myBookList/myBookList",
+    "pages/my/help/help",
+    "pages/my/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",

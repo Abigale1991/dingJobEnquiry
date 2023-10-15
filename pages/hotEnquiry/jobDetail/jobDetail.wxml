@@ -52,7 +52,7 @@
         </view>
       </view>
     </view>
-    <view class="detail-cont flex_flex flex_justify_around" style="margin-top: 90rpx; margin-bottom: 30rpx;padding: 0 30rpx;">
+    <view class="detail-cont flex_flex flex_justify_around" style="margin-top: 80rpx; margin-bottom: 50rpx;padding: 0 30rpx;">
       <view class="midBtn colorfff f32 fontMedium" style="background: #0AD47E;">我要推荐</view>
       <view class="midBtn colorfff f32 fontMedium" style="background: #0067FF;" bind:tap="toBook">我要报名</view>
     </view>

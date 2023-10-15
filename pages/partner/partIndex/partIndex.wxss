@@ -111,3 +111,140 @@
   line-height: 84rpx;
   text-align: center;
 }
+
+/*已是合伙人*/
+.isPartBK {
+  width: 750rpx;
+  height: 602rpx;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+}
+.myPart-contain {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  padding-top: 370rpx;
+  overflow: hidden;
+}
+.partTopWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 370rpx;
+  padding: 0 30rpx;
+}
+.ispartTopPart {
+  width: 100%;
+  height: 210rpx;
+  margin-bottom: 20rpx;
+}
+.ispartPart {
+  width: 334rpx;
+  height: 210rpx;
+  border-radius: 20rpx;
+  padding: 30rpx 20rpx 36rpx 30rpx;
+}
+.ispartleft {
+  background: linear-gradient(131deg, #4176C4 0%, #1D489C 100%);
+  backdrop-filter: blur(20px);
+}
+.ispartright {
+  background: linear-gradient(136deg, #0DC9B8 0%, #05AD91 100%);
+}
+.isparttopbottom {
+  position: relative;
+  width: 100%;
+  height: 120rpx;
+}
+.isparttopbottomback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.isparttopbottomcont {
+  width: 100%;
+  height: 100%;
+  padding: 0 32rpx;
+}
+.isparttopbottomnotice {
+  width: 60rpx;
+  height: 70rpx;
+  margin-right: 30rpx;
+}
+.hotToPart {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #F5F6F7;
+  border-radius: 30rpx 30rpx 0rpx 0rpx;
+  padding-top: 30rpx;
+}
+.hotPartlittleBack {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 45rpx;
+  border-radius: 30rpx 30rpx 0rpx 0rpx;
+  /* background: linear-gradient(180deg, rgba(44,123,236,1) 0%, rgba(44,123,236,0) 100%); */
+  background: linear-gradient(180deg, rgba(165,199,246,0.5) 0%, rgba(44,123,236,0) 100%);
+}
+.hotPartItemWrap {
+  width: 100%;
+  height: 100%;
+  padding: 0 30rpx;
+  overflow-y: scroll;
+}
+.hotPartItem {
+  width: 100%;
+  height: 268rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  padding: 30rpx
+}
+.oneLine {
+  width: 100%;
+  height: 84rpx;
+  margin-bottom: 20rpx;
+}
+.myStatus {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.twoLine {
+  width: 100%;
+  height: 38rpx;
+  line-height: 38rpx;
+  margin-bottom: 15rpx;
+}
+.threeLine {
+  width: 100%;
+  height: 53rpx;
+  line-height: 53rpx;
+}
+.toApply {
+  width: 148rpx;
+  height: 53rpx;
+  background: #0067FF;
+  box-shadow: 0rpx 5rpx 10rpx 0rpx #BADBF4;
+  border-radius: 28rpx;
+  font-weight: 500;
+  text-align: center;
+}
+.moneyBtn {
+  width: 98rpx;
+  height: 53rpx;
+  background: #0067FF;
+  border-radius: 28rpx;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 53rpx;
+  color: #fff;
+}

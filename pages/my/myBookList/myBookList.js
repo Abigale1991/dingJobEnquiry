@@ -9,9 +9,9 @@ Page({
    */
   data: {
     height: app.globalData.height,
-    type: 1,
+    type: 1, // 1表示全部；2表示预约；3表示面试： 4表示入职；；传给后台则每个数字减1
     animationData: {}, //存储tab切换动画数据
-    myJobList: [{}, {}, {},{}, {}, {},{}, {}, {}]
+    myJobList: [{}, {}, {}, {}, {}, {}]
   },
   globalData: {
     windowWidth: 0
@@ -35,23 +35,6 @@ Page({
   goback: function() {
     wx.navigateBack()
   },
-  // render: function(type) {
-    // this.myClick(type)
-    // switch(type) {
-    //   case 2: 
-    //     this.click2();
-    //     break;
-    //   case 3: 
-    //     this.click3();
-    //     break;
-    //   case 4: 
-    //     this.click4();
-    //     break;
-    //   default:
-    //     this.click1();
-    //     break;
-    // }
-  // },
   //tabbar+动画
   myClick: function (e) {
     this.setData({
@@ -71,6 +54,31 @@ Page({
       animationData: animation.export(),
       inJob: true
     })
+    this.getDatas(this.data.type, 1, 10)
+  },
+  getDatas: function(type, page_num, page_size) {
+    var data = {status: type - 1, page_num: page_num, page_size: page_size}
+    util.reqGet('apply_job_list', data, app.globalData.token).then((res) => {
+      console.log('apply_job_list接到参数：', res)
+      this.renderData(res, page_num)
+    })
+  },
+  renderData: function(res, page_num) {
+    res.forEach((item)=> {
+      item.date = item.create_time.split(' ')[0]
+      item.logoUrl = util.getImageUrl(item.logo)
+    })
+    if (page_num == 1) {
+      this.setData({
+        myJobList: res
+      })
+    } else {
+      this.myJobList.push(res)
+      this.setData({
+        myJobList: this.myJobList
+      })
+    }
+    console.log("this.data.myJobList:", this.data.myJobList)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

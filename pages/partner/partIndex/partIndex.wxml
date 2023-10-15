@@ -1,5 +1,5 @@
 <!--pages/partner/partIndex/partIndex.wxml-->
-<view wx:if="{{online}}" class="hot-container flex_column flex_align_center" style="background: #061740;">
+<view wx:if="{{!isParter}}" class="hot-container flex_column flex_align_center" style="background: #061740;">
   <view class="partTopBack">
     <image src="../../../resources/images/partBack.png" mode="aspectFill" style="width: 750rpx;height:1454rpx"/>
   </view>
@@ -39,6 +39,77 @@
     </view>
   </view>
 </view>
-<view wx:else class="tips">
-精彩内容即将上线，敬请期待！
+<view wx:else style="width: 100%; height: 100%">
+  <image class="isPartBK" src="../../../resources/images/isPartBK.png" mode=""/>
+  <view class="hot-container flex_column flex_align_center">
+    <view class="navbar colorfff fontMedium" style='height: {{height + 46}}px; padding-top: {{height}}px;'>成为合伙人</view>
+    <view class="myPart-contain">
+      <view class="partTopWrap">
+        <view class="ispartTopPart flex_flex flex_justify_between">
+          <view class="ispartPart ispartleft flex_column flex_justify_between">
+            <view class="flex_flex flex_justify_start flex_align_center">
+              <image src="../../../resources/images/money.png" mode="" style="width: 36rpx;height: 36rpx;margin-right: 10rpx"/>
+              <text class="f28 colorfff" style="line-height: 40rpx;">可提现金额</text>
+            </view>
+            <view class="flex_flex flex_justify_between flex_align_center" style="height: 66rpx;width: 100%">
+              <view><text class="fontMedium colorfff" style="font-size: 48rpx;line-height: 66rpx;margin-right: 4rpx">23870</text><text class="f28 colorfff" style="line-height: 36rpx;">元</text></view>
+              <view class="moneyBtn fontMedium">提现</view>
+            </view>
+          </view>
+          <view class="ispartPart ispartright flex_column flex_justify_between" bind:tap="toRight">
+            <view class="flex_flex flex_justify_start flex_align_center">
+              <image src="../../../resources/images/myRecommend.png" mode="" style="width: 36rpx;height: 36rpx;margin-right: 10rpx"/>
+              <text class="f28 colorfff" style="line-height: 40rpx;">我推荐入职</text>
+            </view>
+            <view class="flex_flex flex_justify_start flex_align_center" style="height: 66rpx;width: 100%">
+              <view class="flex_flex flex_justify_start" style="width: 130rpx;height: 50rpx;margin-right: 18rpx;">
+                <image src="../../../resources/images/money.png" mode="" style="width: 45rpx;height: 45rpx;"/>
+                <image src="../../../resources/images/money.png" mode="" style="width: 45rpx;height: 45rpx;margin-left: -16rpx"/>
+                <image src="../../../resources/images/money.png" mode="" style="width: 45rpx;height: 45rpx;margin-left: -16rpx"/>
+                <image src="../../../resources/images/money.png" mode="" style="width: 45rpx;height: 45rpx;margin-left: -16rpx"/>
+              </view>
+              <view>
+                <text class="f28 colorfff" style="line-height: 40rpx; margin-right: 6rpx;">23个</text>
+                <image src="../../../resources/images/arrowRight.png" mode="" style="width: 19rpx; height: 19rpx"/>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="isparttopbottom">
+          <image src="../../../resources/images/isPart.png" mode="" class="isparttopbottomback"/>
+          <view class="isparttopbottomcont flex_flex flex_justify_start flex_align_center">
+            <image src="../../../resources/images/notice.png" mode="" class="isparttopbottomnotice"/>
+            <view>
+              <view class="f28 colorfff">下期培训时间：2023年8月23日</view>
+              <view class="f28 colorfff">联系电话：18839849944</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="hotToPart">
+        <view class="hotPartlittleBack"></view>
+        <view class="hotPartItemWrap">
+          <view wx:for="{{isPartHot}}" class="hotPartItem">
+            <view class="oneLine flex_flex flex_justify_start">
+              <view style="width: 84rpx;height: 84rpx;background: #E0E9FD;border-radius: 10rpx; margin-right: 20rpx"></view>
+              <view>
+                <view class="f32 color333 fontMedium" style="line-height: 45rpx;margin-bottom:2rpx;">合肥分拣员</view>
+                <view class="f26 color666" style="line-height: 37rpx;">京东世纪贸易有限公司</view>
+              </view>
+              <view class="myStatus colorMain f32 fontMedium" style="line-height: 45rpx;">5700-9000元</view>
+            </view>
+            <view class="twoLine flex_flex flex_justify_start">
+              <view wx:for="{{featureList}}" class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx; border-radius: 4rpx">{{ item }}</view>
+              <!-- <view class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">早7-晚8</view>
+              <view class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">五险一金</view> -->
+            </view>
+            <view class="threeLine flex_flex flex_justify_between">
+              <view class="f26 color999" style="line-height: 53rpx;">合肥市长丰县双凤路京东亚洲一号</view>
+              <view class="toApply colorfff f24 fontMedium">我要报名</view>
+            </view>
+        </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

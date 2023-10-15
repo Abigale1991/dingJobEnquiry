@@ -44,6 +44,7 @@
   width: 100%;
   height: 168rpx;
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 .corpoPicCont {
   width: 300rpx;

@@ -19,21 +19,24 @@
             <view animation="{{animationData}}"  class="barSelected"></view>
         </view>
     </view>
-    <view class="myJobList">
+    <view wx:if="{{ myJobList.length > 0 }}" class="myJobList">
       <view wx:for="{{myJobList}}" class="myJobItemWrap">
         <view class="myJobline1 flex_flex flex_justify_between">
-          <view class="f34 color333 fontMedium">合肥分拣员</view>
-          <view class="f32 colorMain fontMedium">等待面试</view>
+          <view class="f34 color333 fontMedium">{{ item.job_name }}</view>
+          <view class="f32 colorMain fontMedium">{{ item.status }}</view>
         </view>
-        <view class="myJobline2 f28 colorMain fontMedium">5700-9000元</view>
+        <view class="myJobline2 f28 colorMain fontMedium">{{ item.salary_min }}-{{ item.salary_max }}元</view>
         <view class="myJobline3 flex_flex flex_justify_between flex_align_center">
           <view class=" flex_flex flex_justify_start flex_align_center">
-            <image class="myIconline2" src="../../../resources/images/job.png" mode=""/>
-            <text class="f26 color333">京东世纪贸易有限公司</text>
+            <image class="myIconline2" src="{{ item.logoUrl }}" mode=""/>
+            <text class="f26 color333">{{ item.corporate }}</text>
           </view>
-          <view class="f26 color999">2023-07-20</view>
+          <view class="f26 color999">{{ item.date }}</view>
         </view>
       </view>
+    </view>
+    <view wx:else class="myJobList">
+      <view style="text-align: center; font-size: 32rpx;">暂时没有数据</view>
     </view>
   </view>
 </view>

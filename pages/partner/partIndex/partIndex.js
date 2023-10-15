@@ -1,11 +1,13 @@
 // pages/partner/partIndex/partIndex.js
+const app = getApp()
+const util = require('../../../utils/util.js')
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    online: true,
+    height: app.globalData.height,
+    isParter: false,
     tipsList: [{
       id: 1,
       imgUrl: '../../../resources/images/parttip1.png',
@@ -27,7 +29,9 @@ Page({
     showBottom: false,
     name: '', // 姓名
     phoneNum: '', // 手机号
-    idNum: '' // 身份证号
+    idNum: '', // 身份证号
+    isPartHot: [{},{},{},{},{}],
+    featureList: ['18-28岁','早7-晚8','五险一金','提供住宿']
   },
 
   /**
@@ -74,6 +78,14 @@ Page({
   },
   toBook: function () {
     console.log(this.data.name, this.data.phoneNum, this.data.idNum)
+    // wx.navigateTo({
+    //   url: '/pages/partner/myPart/myPart'
+    // })
+    this.setData({
+      isParter: true
+    })
+  },
+  toRight: function() {
     wx.navigateTo({
       url: '/pages/partner/myPart/myPart'
     })
