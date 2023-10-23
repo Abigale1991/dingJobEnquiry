@@ -7,8 +7,8 @@
     <view class="tabs">
         <view class="searchBy">
             <view wx:if="{{inJob}}" class="byFlightNo selected">在职中</view>
-            <view wx:if="{{inJob}}" class="byCityName" bindtap="byCityName">已离职</view>
-            <view wx:if="{{!inJob}}"  class="byFlightNo" bindtap="byFlightNo">在职中</view>
+            <view wx:if="{{inJob}}" class="byCityName" bindtap="toDimission">已离职</view>
+            <view wx:if="{{!inJob}}"  class="byFlightNo" bindtap="onJob">在职中</view>
             <view wx:if="{{!inJob}}"  class="byCityName selected">已离职</view>
         </view>
         <view class="showBar">
@@ -16,7 +16,7 @@
         </view>
     </view>
     <view class="myJobList">
-      <view wx:for="{{myJobList}}" class="myJobItemWrap">
+      <view wx:for="{{myJobList}}" wx:key="index" class="myJobItemWrap">
         <view class="myJobline1 flex_flex flex_justify_start">
           <!-- <image src="" mode=""/> -->
           <view style="width: 84rpx;height: 84rpx;background: #E0E9FD;border-radius: 50%; margin-right: 20rpx"></view>

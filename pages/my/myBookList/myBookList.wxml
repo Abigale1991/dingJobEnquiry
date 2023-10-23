@@ -20,7 +20,7 @@
         </view>
     </view>
     <view wx:if="{{ myJobList.length > 0 }}" class="myJobList">
-      <view wx:for="{{myJobList}}" class="myJobItemWrap">
+      <view wx:for="{{myJobList}}" wx:key="index" class="myJobItemWrap">
         <view class="myJobline1 flex_flex flex_justify_between">
           <view class="f34 color333 fontMedium">{{ item.job_name }}</view>
           <view class="f32 colorMain fontMedium">{{ item.status }}</view>

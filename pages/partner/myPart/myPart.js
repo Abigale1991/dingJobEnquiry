@@ -8,7 +8,7 @@ Page({
    */
   data: {
     height: app.globalData.height,
-    inJob: true,
+    inJob: true, // true表示在职中
     animationData: {}, //存储tab切换动画数据
     myJobList: [{}, {}, {},{}, {}, {},{}, {}, {}]
   },
@@ -25,12 +25,21 @@ Page({
         this.globalData.windowWidth = res.windowWidth
       }
     })
+    this.getDatas(1, 10)
   },
   goback: function() {
     wx.navigateBack()
   },
-  //tabbar+动画
-  byFlightNo: function () {
+  getDatas: function(page_num, page_size) {
+    var status = this.data.inJob ? 1 : 0
+    var data = {status: status, page_num: page_num, page_size: page_size}
+    util.dingRequest('recommend_workers', 'GET', data).then((res) => {
+      console.log('recommend_workers接到参数：', res)
+      // this.renderData(res, page_num)
+    })
+  },
+  //tabbar+动画 =》点击在职中
+  onJob: function () {
     var animation = wx.createAnimation({
       duration: 500,
       timingFunction: "ease-in-out",
@@ -42,9 +51,10 @@ Page({
       animationData: animation.export(),
       inJob: true
     })
+    this.getDatas(1, 10)
   },
-  //tabbar+动画
-  byCityName: function () {
+  //tabbar+动画=>点击已离职
+  toDimission: function () {
     var animation = wx.createAnimation({
       duration: 500,
       timingFunction: "ease-in-out",
@@ -56,6 +66,7 @@ Page({
       animationData: animation.export(),
       inJob: false
     })
+    this.getDatas(1, 10)
   },
 
   /**

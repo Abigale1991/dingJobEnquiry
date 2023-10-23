@@ -35,7 +35,7 @@
         </t-tabs>
       </view>
       <view class="jobList-contain">
-        <view class="jobItem" wx:for="{{showDataList}}" wx:key="{{item.id}}" data-jobId="{{item.id}}" bindtap="tojobItem">
+        <view class="jobItem" wx:for="{{showDataList}}" wx:key="index">
           <view class="oneLine flex_flex flex_justify_between">
             <text class="color333 fontMedium f34">{{ item.jobName }}</text>
             <text class="colorMain f32 fontMedium">{{item.salaryMin}}-{{item.salaryMax}}元</text>
@@ -50,7 +50,7 @@
               <image class="applyIcon" src="{{item.logaUrl}}" mode="aspectFill"/>
               <text class="f26 color666" style="line-height: 28rpx;">{{ item.addr }}</text>
             </view>
-            <view class="toApply colorfff f24 fontMedium">我要报名</view>
+            <view class="toApply colorfff f24 fontMedium" data-jobId="{{item.id}}" bindtap="tojobItem">我要报名</view>
           </view>
         </view>
 

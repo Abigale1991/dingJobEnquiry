@@ -5,7 +5,7 @@
   <view class="navbar color333 fontMedium" style='height: {{height + 46}}px; padding-top: {{height}}px;'>附近门店</view>
   <view class="cont-contain flex_column flex_align_center">
     <view wx:if="{{online}}" class="nearCont flex_column flex_align_center">
-      <view wx:for="{{storeList}}" wx:key="{{item.id}}" data-storeId="{{item.id}}" class="storeItem">
+      <view wx:for="{{storeList}}" wx:key="index" data-storeId="{{item.id}}" class="storeItem">
         <view class="storeLine1 flex_flex flex_justify_between flex_align_center">
           <view class="f32 fontMedium color333">{{ item.name }}</view>
           <view class="f26 color999 flex_flex flex_align_center"><image src="../../../resources/images/nearAddr.png" style="width: 16rpx;height: 19rpx;margin-right: 7rpx" />{{ item.distanceKm }}km</view>

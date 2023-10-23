@@ -23,7 +23,7 @@ Page({
 
   getDatas: function(page_num, page_size) {
     var data = {lng: this.data.ownLng, lat: this.data.ownLat, page_num: page_num, page_size: page_size}
-    util.reqGet('around_recruitment_shops', data).then((res) => {
+    util.dingRequest('around_recruitment_shops', 'GET', data).then((res) => {
       console.log('around_recruitment_shops接到参数：', res)
       this.renderData(res, page_num)
     }) 

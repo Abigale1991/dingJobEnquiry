@@ -8,6 +8,7 @@ Page({
    */
   data: {
     job_id: -1, // 岗位ID
+    referID: '', // 分享人的标识
     height: app.globalData.height,
     cardList: [{
       imgSrc: "http://oss.umetrip.com/fs/serviceRecommend/1323,3a5ef964ec658103",
@@ -30,6 +31,9 @@ Page({
     if (options.job_id) {
       this.data.job_id = options.job_id
     }
+    if (options.referID) {
+      this.data.referID = options.referID
+    }
   },
   goback: function() {
     wx.navigateBack()
@@ -42,14 +46,12 @@ Page({
   },
   // 手机号输入
   bindInputphoneNum: function (e) {
-    console.log(e)
     this.setData({
       phoneNum: e.detail.value
     })
   },
   //日期选择器
   bindDateChange: function (e) {
-    console.log(e)
     this.setData({
       date: e.detail.value
     })
@@ -70,6 +72,9 @@ Page({
       name: this.data.name, 
       birthday: this.data.date
     }
+    if (this.data.referID) {
+      data['referID'] = this.data.referID
+    }
     // var data = {
     //   referee_open_id: app.globalData.openId, 
     //   job_id: 1, 
@@ -78,7 +83,7 @@ Page({
     //   birthday: "2001-01-10", 
     //   token: "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJlY2IyMGI2NTRhZTU0YzQ1YmIzYWM4MzY2YTA0NGJiZSIsInN1YiI6IldFQ0hBVC5lbXBsb3lfdGVzdCIsImlzcyI6InNnIiwiaWF0IjoxNjk2NzM1MDY3LCJleHAiOjE2OTczMzk4Njd9.nJkTwgP94hCRMoBgpv3Z-BKoLYJ5FhAxbLSsk9kCz9Y"
     // }
-    util.reqPost('apply_job', data, app.globalData.token).then((res) => {
+    util.dingRequest('apply_job', 'POST', data).then((res) => {
       console.log('apply_job接到参数：', res)
       if (res && res.success == '1') {
         wx.showToast({

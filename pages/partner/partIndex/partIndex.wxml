@@ -32,7 +32,7 @@
     </view>
     <view class="flex_flex flex_justify_between flex_align_center" style="height: 78rpx; margin-bottom: 32rpx">
       <text class="f32 color333 fontMedium" style="margin-right: 30rpx">身份证</text>
-      <input type="number" placeholder='请输入身份证' placeholder-class='holder' value='{{idNum}}'  bindinput="bindInputIdNum"></input>
+      <input type="idcard" placeholder='请输入身份证' placeholder-class='holder' value='{{idNum}}'  bindinput="bindInputIdNum"></input>
     </view>
     <view class="bookBtnWrap">
       <view class="bookBtn colorfff f32 fontMedium" bind:tap="toBook">50元 立即支付</view>
@@ -52,7 +52,7 @@
               <text class="f28 colorfff" style="line-height: 40rpx;">可提现金额</text>
             </view>
             <view class="flex_flex flex_justify_between flex_align_center" style="height: 66rpx;width: 100%">
-              <view><text class="fontMedium colorfff" style="font-size: 48rpx;line-height: 66rpx;margin-right: 4rpx">23870</text><text class="f28 colorfff" style="line-height: 36rpx;">元</text></view>
+              <view><text class="fontMedium colorfff" style="font-size: 48rpx;line-height: 66rpx;margin-right: 4rpx">{{ cashableAmount }}</text><text class="f28 colorfff" style="line-height: 36rpx;">元</text></view>
               <view class="moneyBtn fontMedium">提现</view>
             </view>
           </view>
@@ -69,7 +69,7 @@
                 <image src="../../../resources/images/money.png" mode="" style="width: 45rpx;height: 45rpx;margin-left: -16rpx"/>
               </view>
               <view>
-                <text class="f28 colorfff" style="line-height: 40rpx; margin-right: 6rpx;">23个</text>
+                <text class="f28 colorfff" style="line-height: 40rpx; margin-right: 6rpx;">{{ recommendNum }}个</text>
                 <image src="../../../resources/images/arrowRight.png" mode="" style="width: 19rpx; height: 19rpx"/>
               </view>
             </view>
@@ -79,9 +79,10 @@
           <image src="../../../resources/images/isPart.png" mode="" class="isparttopbottomback"/>
           <view class="isparttopbottomcont flex_flex flex_justify_start flex_align_center">
             <image src="../../../resources/images/notice.png" mode="" class="isparttopbottomnotice"/>
-            <view>
-              <view class="f28 colorfff">下期培训时间：2023年8月23日</view>
-              <view class="f28 colorfff">联系电话：18839849944</view>
+            <view style="flex: 1;">
+              <text class="f28 colorfff" style="line-height: 42rpx;">{{ trainNotice }}</text>
+              <!-- <view class="f28 colorfff">下期培训时间：2023年8月23日</view>
+              <view class="f28 colorfff">联系电话：18839849944</view> -->
             </view>
           </view>
         </view>
@@ -89,23 +90,25 @@
       <view class="hotToPart">
         <view class="hotPartlittleBack"></view>
         <view class="hotPartItemWrap">
-          <view wx:for="{{isPartHot}}" class="hotPartItem">
+          <view wx:for="{{isPartHot}}" wx:key="index" class="hotPartItem">
             <view class="oneLine flex_flex flex_justify_start">
-              <view style="width: 84rpx;height: 84rpx;background: #E0E9FD;border-radius: 10rpx; margin-right: 20rpx"></view>
-              <view>
-                <view class="f32 color333 fontMedium" style="line-height: 45rpx;margin-bottom:2rpx;">合肥分拣员</view>
-                <view class="f26 color666" style="line-height: 37rpx;">京东世纪贸易有限公司</view>
+              <view style="width: 84rpx;height: 84rpx;background: #E0E9FD;border-radius: 10rpx; margin-right: 20rpx; overflow: hidden;">
+                <image src="{{item.logaUrl}}" style="width: 84rpx;height: 84rpx;" mode="aspectFill"/>
               </view>
-              <view class="myStatus colorMain f32 fontMedium" style="line-height: 45rpx;">5700-9000元</view>
+              <view>
+                <view class="f32 color333 fontMedium" style="line-height: 45rpx;margin-bottom:2rpx;">{{ item.jobName }}</view>
+                <view class="f26 color666" style="line-height: 37rpx;">{{ item.corporate }}</view>
+              </view>
+              <view class="myStatus colorMain f32 fontMedium" style="line-height: 45rpx;">{{ item.salaryMin }}-{{ item.salaryMax }}元</view>
             </view>
             <view class="twoLine flex_flex flex_justify_start">
-              <view wx:for="{{featureList}}" class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx; border-radius: 4rpx">{{ item }}</view>
+              <view wx:for="{{item.featureList}}" wx:key="index" class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx; border-radius: 4rpx">{{ item }}</view>
               <!-- <view class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">早7-晚8</view>
               <view class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">五险一金</view> -->
             </view>
             <view class="threeLine flex_flex flex_justify_between">
-              <view class="f26 color999" style="line-height: 53rpx;">合肥市长丰县双凤路京东亚洲一号</view>
-              <view class="toApply colorfff f24 fontMedium">我要报名</view>
+              <view class="f26 color999" style="line-height: 53rpx;">{{ item.addr }}</view>
+              <view class="toApply colorfff f24 fontMedium" data-jobId="{{item.id}}" bindtap="tojobItem">我要报名</view>
             </view>
         </view>
         </view>

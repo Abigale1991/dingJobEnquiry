@@ -51,18 +51,29 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onShow(options) {
+  onLoad(options) {
+    // this.firstGetData()
+  },
+  onShow() {
+    if (this.data.showDataList.length < 1) {
+      this.firstGetData()
+    }
+  },
+  firstGetData: function() {
     // 获取城市列表
-    util.reqGet('area_list', {}).then((res) => {
+    util.dingRequest('area_list', 'GET', {}).then((res) => {
       console.log('area_list接到参数：', res)
       if (res.length > 0) {
         this.setData({
           tabList: res
         })
+        // 获取岗位数据
+        var firstAreaId = res[0].id
+        this.getDatas(firstAreaId, 1, 10)
       }
     })
     // 获取banner热门岗位信息
-    util.reqGet('idx_config', {}).then((res) => {
+    util.dingRequest('idx_config', 'GET', {areaId: 0}).then((res) => {
       console.log('idx_config接到参数：', res)
       var data = [{
         imgSrc: "http://oss.umetrip.com/fs/serviceRecommend/1323,3a5ef964ec658103",
@@ -71,16 +82,23 @@ Page({
       this.setData({
         cardList: data
       })
+      if (this.data.cardList.length > 1) { // 广告图>1，则展示轮播效果
+        this.setData({dotsflag: true})
+      }
+      // 其他数据放到合伙人页面使用
+      if (res.hot_jobs && res.hot_jobs.length > 0) {
+        res.hot_jobs.forEach((item)=> {
+          // item.features2 = '缴纳五险一金&&宿舍环境超好&&薪资待遇高'
+          item.featureList = item.features.split('&&')
+          item.logaUrl = util.getImageUrl(item.logo)
+        })
+        app.globalData.hot_jobs = res.hot_jobs
+      }
     })
-    if (this.data.cardList.length > 1) { // 广告图>1，则展示轮播效果
-      this.setData({dotsflag: true})
-    }
-    // 获取岗位数据
-    this.getDatas(1, 1, 10)
   },
   getDatas: function(area_id, page_num, page_size) {
     var data = {area_id: area_id, page_num: page_num, page_size: page_size}
-    util.reqGet('area_job_list', data).then((res) => {
+    util.dingRequest('area_job_list', 'GET', data).then((res) => {
       console.log('area_job_list接到参数：', res)
       this.renderData(res, page_num)
     })

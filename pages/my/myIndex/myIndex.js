@@ -36,7 +36,7 @@ Page({
     }
   },
   getDatas: function () {
-    util.reqGet('get_wechat_user', {}, app.globalData.token).then((res) => {
+    util.dingRequest('get_wechat_user', 'GET', {}).then((res) => {
       console.log('get_wechat_user接到参数：', res)
       this.setData({ownInfo: res})
       console.log(this.data.nickName, this.data.avatarUrl)
@@ -60,24 +60,26 @@ Page({
       avatarUrl: e.detail.avatarUrl
     })
     app.globalData.avatarUrl = e.detail.avatarUrl
-    wx.uploadFile({
-      filePath: e.detail.avatarUrl,
-      name: 'avatarImg',
-      url: 'https://m.fncyy.com/api/employ/upload_avatar',
-      header: {token: app.globalData.token},
-      success: (res) => {
-        console.log('上传文件：', res)
-        if (res && res.data) {
-          var dataObj = JSON.parse(res.data)
-          if (dataObj.errCode == 0 && dataObj.data) {
-            this.setData({
-              avatarUrl: util.getImageUrl(dataObj.data)
-            })
-            app.globalData.avatarUrl = e.detail.avatarUrl
+    if (wx.getStorageSync('token') && wx.getStorageSync('token').length > 0) {
+      wx.uploadFile({
+        filePath: e.detail.avatarUrl,
+        name: 'avatarImg',
+        url: 'https://m.fncyy.com/api/employ/upload_avatar',
+        header: {token: wx.getStorageSync('token')},
+        success: (res) => {
+          console.log('上传文件：', res)
+          if (res && res.data) {
+            var dataObj = JSON.parse(res.data)
+            if (dataObj.errCode == 0 && dataObj.data) {
+              this.setData({
+                avatarUrl: util.getImageUrl(dataObj.data)
+              })
+              app.globalData.avatarUrl = e.detail.avatarUrl
+            }
           }
         }
-      }
-    })
+      })
+    }
   },
   toInputChange: function (e) {
     console.log(e)
@@ -99,7 +101,7 @@ Page({
       // avatarUrl: app.globalData.avatarUrl,
       nickName: this.data.nickName
     }
-    util.reqPost('set_wechat_user', data, app.globalData.token).then((res) => {
+    util.dingRequest('set_wechat_user', 'POST', data).then((res) => {
       console.log('set_wechat_user接到参数：', res)
       // if (res && res.success == '1') {
       //   wx.showToast({
