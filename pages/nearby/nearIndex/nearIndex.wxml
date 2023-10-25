@@ -3,7 +3,7 @@
 </view>
 <view class="hot-container flex_column flex_align_center">
   <view class="navbar color333 fontMedium" style='height: {{height + 46}}px; padding-top: {{height}}px;'>附近门店</view>
-  <view class="cont-contain flex_column flex_align_center">
+  <scroll-view class="cont-contain flex_column flex_align_center" style="height: {{scrollHeight}}px;" scroll-y lower-threshold="0" bindscrolltolower="togetMoreData">
     <view wx:if="{{online}}" class="nearCont flex_column flex_align_center">
       <view wx:for="{{storeList}}" wx:key="index" data-storeId="{{item.id}}" class="storeItem">
         <view class="storeLine1 flex_flex flex_justify_between flex_align_center">
@@ -14,7 +14,10 @@
         <view class="storeLine3 flex_flex flex_justify_between flex_align_center">
           <view class="storeLine3Left flex_flex flex_justify_start flex_align_center">
             <!-- <image src="../" mode=""/> -->
-            <view style="width: 68rpx;height: 68rpx; background: #E5ECFF;border-radius: 50%;margin-right: 20rpx"></view>
+            <view style="width: 68rpx;height: 68rpx; background: #E5ECFF;border-radius: 50%;margin-right: 20rpx;overflow: hidden;">
+              <image wx:if="{{ item.avatarURL }}" src="{{ item.avatarURL }}" style="width: 68rpx;height: 68rpx;" mode=""/>
+              <image wx:else="" src="../../../resources/images/visitor.png" style="width: 68rpx;height: 68rpx;" mode=""/>
+            </view>
             <view>
               <view class="f26 color333">{{ item.manager }}</view>
               <view class="f26 color999">{{ item.tel }}</view>
@@ -27,6 +30,6 @@
     <view wx:else class="tips">
     精彩内容即将上线，敬请期待！
     </view>
-  </view>
+  </scroll-view>
 </view>
 

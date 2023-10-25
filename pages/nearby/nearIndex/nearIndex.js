@@ -9,18 +9,41 @@ Page({
   data: {
     online: true,
     height: app.globalData.height,
+    scrollHeight: 0,// 可滚动区域高度
     storeList: [], // 展示列表
     ownLng: '39.91305',
-    ownLat: '116.3643'
+    ownLat: '116.3643',
+    page_num: 1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onShow(options) {
-    this.getDatas(1, 10)
+  onLoad(options) {
+    this.getHeight()
   },
-
+  onShow(options) {
+    if (this.data.storeList.length < 1) {
+      this.data.page_num = 1
+      this.data.more = true
+      this.getDatas(1, 10)
+    }
+  },
+  getHeight: function () {
+    var allWidth
+    var allHeight
+    wx.getSystemInfo({
+      success: function (res) {
+        allWidth = res.windowWidth
+        allHeight = res.windowHeight
+      }
+    })
+    var titleHeight = this.data.height + 46
+    var scrollHeight = allHeight - titleHeight
+    this.setData({
+      scrollHeight: scrollHeight
+    })
+  },
   getDatas: function(page_num, page_size) {
     var data = {lng: this.data.ownLng, lat: this.data.ownLat, page_num: page_num, page_size: page_size}
     util.dingRequest('around_recruitment_shops', 'GET', data).then((res) => {
@@ -28,25 +51,28 @@ Page({
       this.renderData(res, page_num)
     }) 
   },
-
+  togetMoreData: function(e) {
+    console.log('加载更多', e)
+    if (this.data.more) {
+      this.getDatas(this.data.page_num, 10)
+    }
+  },
   renderData: function(res, page_num) {
     res.forEach((item)=> {
       // item.features2 = '缴纳五险一金&&宿舍环境超好&&薪资待遇高'
       // item.featureList = item.features.split('&&')
       item.distanceKm = parseFloat((item.distance / 1000).toFixed(1))
-      // item.logaUrl = util.getImageUrl(item.logo)
+      item.avatarUrl = util.getImageUrl(item.avatar)
+      this.data.storeList.push(item)
     })
-    if (page_num == 1) {
-      this.setData({
-        storeList: res
-      })
+    this.setData({
+      storeList: this.data.storeList
+    })
+    if (res.length < 10) {
+      this.data.more = false
     } else {
-      this.storeList.push(res)
-      this.setData({
-        storeList: this.storeList
-      })
+      this.data.page_num++
     }
-    console.log("this.data.showDataList:", this.data.showDataList)
   },
   toMakePhone: function(e) {
     console.log(e)

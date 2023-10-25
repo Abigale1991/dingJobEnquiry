@@ -76,7 +76,7 @@ Page({
     util.dingRequest('idx_config', 'GET', {areaId: 0}).then((res) => {
       console.log('idx_config接到参数：', res)
       var data = [{
-        imgSrc: "http://oss.umetrip.com/fs/serviceRecommend/1323,3a5ef964ec658103",
+        imgSrc: res.hot_job_img ? res.hot_job_img : "http://oss.umetrip.com/fs/serviceRecommend/1323,3a5ef964ec658103",
         hot_job_id: res.hot_job_id
       }]
       this.setData({

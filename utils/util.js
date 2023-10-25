@@ -56,7 +56,7 @@ function dingRequest(path, type, params) {
           wx.showToast({
             title: res.data.errMsg,
             icon: "none",
-            duration: 2000,
+            duration: 1000,
             mask: true
           })
         }
@@ -66,7 +66,7 @@ function dingRequest(path, type, params) {
         wx.showToast({
           title: '网络出错，请稍后重试',
           icon: "none",
-          duration: 2000,
+          duration: 1000,
           mask: true
         })
         reject(err)
@@ -80,7 +80,7 @@ function dingRequest(path, type, params) {
 }
 
 function getImageUrl(imgName) {
-  return baseUrl + '/static/' + imgName
+  return imgName? (baseUrl + '/static/' + imgName) : ''
 }
 
 module.exports = {

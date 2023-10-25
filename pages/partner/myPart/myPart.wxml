@@ -19,20 +19,22 @@
       <view wx:for="{{myJobList}}" wx:key="index" class="myJobItemWrap">
         <view class="myJobline1 flex_flex flex_justify_start">
           <!-- <image src="" mode=""/> -->
-          <view style="width: 84rpx;height: 84rpx;background: #E0E9FD;border-radius: 50%; margin-right: 20rpx"></view>
-          <view>
-            <view class="f32 color333 fontMedium" style="line-height: 45rpx;margin-bottom:2rpx;">汪先生</view>
-            <view class="f26 color999" style="line-height: 37rpx;">54岁 18964529904</view>
+          <view style="width: 84rpx;height: 84rpx;background: #E0E9FD;border-radius: 50%; margin-right: 20rpx;overflow: hidden;">
+            <image src="{{ item.avatarUrl }}" mode="" style="width: 84rpx;height: 84rpx;"/>
           </view>
-          <view class="myStatus f32 color999 fontMedium" style="line-height: 45rpx;">在职中</view>
+          <view>
+            <view class="f32 color333 fontMedium" style="line-height: 45rpx;margin-bottom:2rpx;">{{ item.name }}</view>
+            <view class="f26 color999" style="line-height: 37rpx;">{{ item.age }}岁 {{ item.tel }}</view>
+          </view>
+          <view class="myStatus f32 color999 fontMedium" style="line-height: 45rpx;">{{ item.status }}</view>
         </view>
         <view class="myJobline2 flex_flex flex_justify_start flex_align_center" style="margin-bottom: 10rpx;">
           <image class="myIconline2" src="../../../resources/images/job.png" mode=""/>
-          <text class="f26 color333">岗位：合肥分拣员</text>
+          <text class="f26 color333">岗位：{{ item.job_name }}</text>
         </view>
         <view class="myJobline2 flex_flex flex_justify_start flex_align_center">
           <image class="myIconline2" src="../../../resources/images/house.png" mode=""/>
-          <text class="f26 color333">公司：京东世纪贸易有限公司</text>
+          <text class="f26 color333">公司：{{ item.corporate }}</text>
         </view>
       </view>
     </view>

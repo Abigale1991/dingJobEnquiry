@@ -10,7 +10,7 @@ Page({
     height: app.globalData.height,
     inJob: true, // true表示在职中
     animationData: {}, //存储tab切换动画数据
-    myJobList: [{}, {}, {},{}, {}, {},{}, {}, {}]
+    myJobList: []
   },
   globalData: {
     windowWidth: 0
@@ -35,8 +35,23 @@ Page({
     var data = {status: status, page_num: page_num, page_size: page_size}
     util.dingRequest('recommend_workers', 'GET', data).then((res) => {
       console.log('recommend_workers接到参数：', res)
-      // this.renderData(res, page_num)
+      this.renderData(res, page_num)
     })
+  },
+  renderData: function(res, page_num) {
+    res.forEach((item)=> {
+      item.avatarUrl = util.getImageUrl(item.avatar)
+    })
+    if (page_num == 1) {
+      this.setData({
+        myJobList: res
+      })
+    } else {
+      this.data.myJobList.push(res)
+      this.setData({
+        myJobList: this.data.myJobList
+      })
+    }
   },
   //tabbar+动画 =》点击在职中
   onJob: function () {

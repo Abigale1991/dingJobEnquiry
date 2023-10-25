@@ -34,6 +34,7 @@ Page({
     featureList: ['18-28岁','早7-晚8','五险一金','提供住宿'],
     prePayId: '', // 支付参数
     recommendNum: '--', // 成合伙人后：推荐
+    avatarsList: [], // 推荐人头像
     cashableAmount: '--',  // 成合伙人后：可提现金额
     trainNotice: '' // 成合伙人后：公告
   },
@@ -72,8 +73,18 @@ Page({
           // }
         }
         this.setData({
-          trainNotice: res.trainNotice
+          trainNotice: res.trainNotice || ''
         })
+        if (res.avatars && res.avatars.length > 0) {
+          var avatarsList = []
+          res.avatars.forEach((item)=> {
+            avatarsList.push(util.getImageUrl(item))
+          })
+
+          this.setData({
+            avatarsList: avatarsList
+          })
+        } 
         // if (res.partner.trainNotice !== this.data.trainNotice) {
         //   this.setData({
         //     trainNotice: res.partner.trainNotice
@@ -122,6 +133,7 @@ Page({
       idNum: e.detail.value
     })
   },
+  // 成为合伙人=》发起支付
   toBook: function () {
     console.log(this.data.name, this.data.phoneNum, this.data.idNum)
     if (this.data.name.length < 1 || this.data.phoneNum.length < 1 || this.data.idNum.length < 1) {
@@ -163,6 +175,16 @@ Page({
       })
     })
   },
+  // 点击『提现』
+  toGetMoney: function () {
+    wx.showToast({
+      title: '请至阜南人力资源产业园线下提取哦！',
+      icon: "none",
+      duration: 1000,
+      mask: true
+    })
+  },
+  // 点击『我推荐入职』
   toRight: function() {
     wx.navigateTo({
       url: '/pages/partner/myPart/myPart'
