@@ -21,6 +21,16 @@ function getToken(path, type, params) {
     }
   })
 }
+
+function toGetUserInfo() {
+  dingRequest('get_wechat_user', 'GET', {}).then((res) => {
+    console.log('get_wechat_user接到参数：', res)
+    if (res) {
+      wx.setStorageSync('isPartner', res.partner)
+    }
+  })
+}
+
 function dingRequest(path, type, params) {
   // 处理header
   var header = {
@@ -86,5 +96,6 @@ function getImageUrl(imgName) {
 module.exports = {
   dingRequest,
   getImageUrl,
-  getToken
+  getToken,
+  toGetUserInfo
 }

@@ -55,7 +55,7 @@
 view, text {
   font-family: "PingFang SC","Microsoft YaHei",Arial,sans-serif;
 }
-view {
+view, scroll-view {
   box-sizing: border-box;
 }
 .navbar {
@@ -114,7 +114,7 @@ view {
 page {
   width: 100%;
   height: 100%;
-  /* background-color: #F5F6F7; */
+  background-color: #F5F6F7;
 }
 .back-gray-567 {
   background-color: #F5F6F7;
@@ -134,7 +134,7 @@ page {
   width: 750rpx;
   height: 602rpx;
   /* background: linear-gradient(154deg, #D9E2FF 0%, #EAECF1 100%)； */
-  background: linear-gradient(230deg, rgba(170,220,255,0.8) 0%, rgba(183,224,254,0) 100%);
+  background: linear-gradient(200deg, rgba(170,220,255,0.8) 0%, rgba(183,224,254,0) 100%);
   position: absolute;
   top: 0;
   z-index: 0;

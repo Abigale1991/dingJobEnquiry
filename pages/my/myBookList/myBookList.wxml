@@ -19,7 +19,7 @@
             <view animation="{{animationData}}"  class="barSelected"></view>
         </view>
     </view>
-    <view wx:if="{{ myJobList.length > 0 }}" class="myJobList">
+    <scroll-view class="myJobList" style="height: {{scrollHeight}}px;" scroll-y lower-threshold="50" bindscrolltolower="togetMoreData">
       <view wx:for="{{myJobList}}" wx:key="index" class="myJobItemWrap">
         <view class="myJobline1 flex_flex flex_justify_between">
           <view class="f34 color333 fontMedium">{{ item.job_name }}</view>
@@ -34,9 +34,10 @@
           <view class="f26 color999">{{ item.date }}</view>
         </view>
       </view>
-    </view>
-    <view wx:else class="myJobList">
+      <view wx:if="{{ isTipsShow }}" style="width: 100%; height: 100rpx; line-height: 100rpx; text-align: center; font-size: 30rpx; color: #666;">{{ tipsWord }}</view>
+    </scroll-view>
+    <!-- <view wx:else class="myJobList">
       <view style="text-align: center; font-size: 32rpx;">暂时没有数据</view>
-    </view>
+    </view> -->
   </view>
 </view>

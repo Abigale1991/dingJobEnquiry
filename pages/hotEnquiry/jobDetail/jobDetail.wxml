@@ -26,7 +26,7 @@
         <view class="line"></view>
         <view class="threeLine flex_flex flex_justify_between">
           <view class="applyLeft flex_flex flex_justify_start flex_align_center">
-            <image class="applyIcon" src="{{jobInfo.logaUrl}}" mode="aspectFill"/>
+            <image wx:if="{{jobInfo.logo}}" class="applyIcon" src="{{jobInfo.logaUrl}}" mode="aspectFill"/>
             <view>
               <view class="f24 color333" style="line-height: 32rpx;margin-bottom:4rpx;">{{ jobInfo.corporate }}</view>
               <view class="f24 color999" style="line-height: 28rpx;">{{ jobInfo.addr }}</view>
@@ -42,7 +42,7 @@
         <view><text class="color666 f26" style="line-height: 48rpx;">{{jobInfo.jobDescription}}</text></view>
       </view>
     </view>
-    <view class="datail-cont">
+    <view wx:if="{{jobInfo.corporateList && jobInfo.corporateList.length > 0}}" class="datail-cont">
       <view class="detail-Mid">
         <view class="color333 fontMedium f34" style="line-height: 48rpx;margin-bottom: 20rpx;">厂区图片</view>
         <view class="flex_flex flex_justify_start pictureList">

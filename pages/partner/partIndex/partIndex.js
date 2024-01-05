@@ -36,7 +36,9 @@ Page({
     recommendNum: '--', // 成合伙人后：推荐
     avatarsList: [], // 推荐人头像
     cashableAmount: '--',  // 成合伙人后：可提现金额
-    trainNotice: '' // 成合伙人后：公告
+    trainNotice: '', // 成合伙人后：公告
+    trainBeginTime: '',
+    trainEndTime: ''
   },
 
   /**
@@ -73,7 +75,9 @@ Page({
           // }
         }
         this.setData({
-          trainNotice: res.trainNotice || ''
+          trainNotice: res.trainInfo && res.trainInfo.trainInfo ? res.trainInfo.trainInfo : '',
+          trainBeginTime: res.trainInfo && res.trainInfo.beginTime ? res.trainInfo.beginTime : '',
+          trainEndTime: res.trainInfo && res.trainInfo.endTime ? res.trainInfo.endTime : '',
         })
         if (res.avatars && res.avatars.length > 0) {
           var avatarsList = []
@@ -167,7 +171,7 @@ Page({
           this.setData({
             isParter: true
           })
-          wx.setStorageSync('isParter', true)
+          wx.setStorageSync('isPartner', true)
         },
         fail: (res) => {
           console.log('支付失败，微信返回值：', res)

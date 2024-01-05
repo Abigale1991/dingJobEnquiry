@@ -9,16 +9,16 @@
     "miniprogram": {
       "list": [
         {
-          "name": "岗位预约记录",
-          "pathName": "pages/my/myBookList/myBookList",
-          "query": "type=3",
+          "name": "岗位详情页",
+          "pathName": "pages/hotEnquiry/jobDetail/jobDetail",
+          "query": "job_id=5&referID=j7aAqfXdiAC2fIKVttBqLGjkTVf0HPnO+JGvWz+tlKI",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "岗位详情页",
-          "pathName": "pages/hotEnquiry/jobDetail/jobDetail",
-          "query": "jobid=5",
+          "name": "岗位预约记录",
+          "pathName": "pages/my/myBookList/myBookList",
+          "query": "type=3",
           "launchMode": "default",
           "scene": null
         }

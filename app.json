@@ -17,6 +17,14 @@
     "navigationBarTitleText": "人力资源产业园",
     "navigationBarTextStyle": "black"
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于定位附近门店"
+    }
+  },
+  "requiredPrivateInfos": [ 
+    "getLocation"
+  ],
   "tabBar": {
     "color": "#B3B3B3",
     "selectedColor": "#0067FF",

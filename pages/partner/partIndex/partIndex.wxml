@@ -83,8 +83,8 @@
             <image src="../../../resources/images/notice.png" mode="" class="isparttopbottomnotice"/>
             <view style="flex: 1;">
               <text class="f28 colorfff" style="line-height: 42rpx;">{{ trainNotice }}</text>
-              <!-- <view class="f28 colorfff">下期培训时间：2023年8月23日</view>
-              <view class="f28 colorfff">联系电话：18839849944</view> -->
+              <view class="f28 colorfff">培训时间：{{ trainBeginTime }}到{{ trainEndTime }}</view>
+              <!-- <view class="f28 colorfff">联系电话：18839849944</view> -->
             </view>
           </view>
         </view>
@@ -92,9 +92,9 @@
       <view class="hotToPart">
         <view class="hotPartlittleBack"></view>
         <view class="hotPartItemWrap">
-          <view wx:for="{{isPartHot}}" wx:key="index" class="hotPartItem">
+          <view wx:for="{{isPartHot}}" wx:key="index" class="hotPartItem" data-jobId="{{item.id}}" bindtap="tojobItem">
             <view class="oneLine flex_flex flex_justify_start">
-              <view style="width: 84rpx;height: 84rpx;background: #E0E9FD;border-radius: 10rpx; margin-right: 20rpx; overflow: hidden;">
+              <view style="width: 84rpx;height: 84rpx;border-radius: 10rpx; margin-right: 20rpx; overflow: hidden;">
                 <image src="{{item.logaUrl}}" style="width: 84rpx;height: 84rpx;" mode="aspectFill"/>
               </view>
               <view>
@@ -110,7 +110,7 @@
             </view>
             <view class="threeLine flex_flex flex_justify_between">
               <view class="f26 color999" style="line-height: 53rpx;">{{ item.addr }}</view>
-              <view class="toApply colorfff f24 fontMedium" data-jobId="{{item.id}}" bindtap="tojobItem">我要报名</view>
+              <view class="toApply colorfff f24 fontMedium">我要报名</view>
             </view>
         </view>
         </view>

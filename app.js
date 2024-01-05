@@ -2,11 +2,6 @@
 const util = require('./utils/util.js')
 App({
   onLaunch() {
-    // 登录
-    var token = wx.getStorageSync('token');
-    if (!token) {
-      util.getToken()
-    }
   },
   onShow() {
     wx.getSystemInfo({
@@ -15,6 +10,13 @@ App({
         this.globalData.windowWidth = res.windowWidth
       }
     })
+    // 登录
+    var token = wx.getStorageSync('token');
+    if (!token) {
+      util.getToken()
+    } else {
+      util.toGetUserInfo()
+    }
   },
   globalData: {
     height: 0,

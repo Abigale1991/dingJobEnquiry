@@ -1,60 +1,63 @@
 <!--pages/hotEnquiry/hotIndex/hotIndex.wxml-->
 <view class="topBack">
 </view>
-<view class="hot-container flex_column flex_align_center">
-  <view class="navbar color333 fontMedium" style='height: {{height + 46}}px; padding-top: {{height}}px;'>人力资源产业园</view>
-  <view class="cont-contain flex_column flex_align_center">
-    <view wx:if="{{ cardList && cardList.length > 0 }}" class="waistWrapper">
-      <swiper indicator-dots="{{dotsflag}}" circular="true" indicator-color="rgba(255,255,255, .4)" indicator-active-color="rgba(255,255,255)" autoplay="true" class="waistSeal_swiper">
-        <block wx:for="{{cardList}}" wx:key="index">
-          <swiper-item class="waitItem">
-            <view class="waistSealImg" data-item="{{item}}" bindtap="jumpToRecommend">
-              <image class='waistSealImg' src="{{ item.imgSrc }}"></image>
-            </view>
-          </swiper-item>
-        </block>
-      </swiper>
-    </view>
-    <view class="home-contain">
-      <view class="home-page-tabs">
-        <t-tabs
-          t-class="t-tabs"
-          t-class-active="tabs-external__active"
-          t-class-item="tabs-external__item"
-          defaultValue="{{1}}"
-          space-evenly="{{false}}"
-          bind:change="tabChangeHandle"
-        >
-          <t-tab-panel
-            wx:for="{{tabList}}"
-            wx:for-index="index"
-            wx:key="index"
-            label="{{item.areaName}}"
-            value="{{item.id}}"
-          />
-        </t-tabs>
+<view class="hot-container flex_align_center" style="padding-top: {{height + 46}}px;position: relative;">
+  <view class="navbar color333 fontMedium" style='position:absolute; top:0; height: {{height + 46}}px; padding-top: {{height}}px;'>人力资源产业园</view>
+  <scroll-view style="width: 100%;height: 100%;overflow-y:scroll" style="height: {{scrollHeight}}px;" scroll-y lower-threshold="0" bindscrolltolower="togetMoreData">
+    <view class="cont-contain flex_column flex_align_center">
+      <view wx:if="{{ cardList && cardList.length > 0 }}" class="waistWrapper">
+        <swiper indicator-dots="{{dotsflag}}" circular="true" indicator-color="rgba(255,255,255, .4)" indicator-active-color="rgba(255,255,255)" autoplay="true" class="waistSeal_swiper">
+          <block wx:for="{{cardList}}" wx:key="index">
+            <swiper-item class="waitItem">
+              <view class="waistSealImg" data-item="{{item}}" bindtap="jumpToRecommend">
+                <image class='waistSealImg' src="{{ item.imgSrc }}"></image>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
       </view>
-      <view class="jobList-contain">
-        <view class="jobItem" wx:for="{{showDataList}}" wx:key="index">
-          <view class="oneLine flex_flex flex_justify_between">
-            <text class="color333 fontMedium f34">{{ item.jobName }}</text>
-            <text class="colorMain f32 fontMedium">{{item.salaryMin}}-{{item.salaryMax}}元</text>
-          </view>
-          <view class="twoLine flex_flex flex_justify_start">
-            <view wx:for="{{item.featureList}}" wx:key="index" class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">{{ item }}</view>
-            <!-- <view class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">早7-晚8</view>
-            <view class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">五险一金</view> -->
-          </view>
-          <view class="threeLine flex_flex flex_justify_between">
-            <view class="applyLeft flex_flex flex_justify_start flex_align_center">
-              <image class="applyIcon" src="{{item.logaUrl}}" mode="aspectFill"/>
-              <text class="f26 color666" style="line-height: 28rpx;">{{ item.addr }}</text>
-            </view>
-            <view class="toApply colorfff f24 fontMedium" data-jobId="{{item.id}}" bindtap="tojobItem">我要报名</view>
-          </view>
+      <view class="home-contain">
+        <view class="home-page-tabs">
+          <t-tabs
+            t-class="t-tabs"
+            t-class-active="tabs-external__active"
+            t-class-item="tabs-external__item"
+            defaultValue="{{now_area_id}}"
+            value="{{now_area_id}}"
+            space-evenly="{{false}}"
+            bind:change="tabChangeHandle"
+          >
+            <t-tab-panel
+              wx:for="{{tabList}}"
+              wx:for-index="index"
+              wx:key="index"
+              label="{{item.areaName}}"
+              value="{{item.id}}"
+            />
+          </t-tabs>
         </view>
-
+        <view class="jobList-contain">
+          <view class="jobItem" data-jobId="{{item.id}}" bindtap="tojobItem" wx:for="{{showDataList}}" wx:key="index">
+            <view class="oneLine flex_flex flex_justify_between">
+              <text class="color333 fontMedium f34">{{ item.jobName }}</text>
+              <text class="colorMain f32 fontMedium">{{item.salaryMin}}-{{item.salaryMax}}元</text>
+            </view>
+            <view class="twoLine flex_flex flex_justify_start">
+              <view wx:for="{{item.featureList}}" wx:key="index" class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">{{ item }}</view>
+              <!-- <view class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">早7-晚8</view>
+              <view class="color666 f24 back-gray-567" style="padding: 0 10rpx;margin-right: 10rpx">五险一金</view> -->
+            </view>
+            <view class="threeLine flex_flex flex_justify_between">
+              <view class="applyLeft flex_flex flex_justify_start flex_align_center">
+                <image wx:if="{{item.logo}}" class="applyIcon" src="{{item.logaUrl}}" mode="aspectFill"/>
+                <text class="f26 color666" style="display:inline-block;width:450rpx;line-height: 28rpx;">{{ item.addr }}</text>
+              </view>
+              <view class="toApply colorfff f24 fontMedium">我要报名</view>
+            </view>
+          </view>
+          <view wx:if="{{ isTipsShow }}" style="width: 100%; height: 150rpx; line-height: 150rpx; text-align: center; font-size: 30rpx; color: #666;">{{ tipsWord }}</view>
+        </view>
       </view>
     </view>
-  </view>
+  </scroll-view>
 </view>

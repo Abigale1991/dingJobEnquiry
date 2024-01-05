@@ -31,7 +31,7 @@ Page({
     util.dingRequest("job_info", 'GET', data).then((res) => {
       console.log('job_info接到岗位参数：', res)
       res.corporateList = [];
-      var picList = res.corporatePics.split(',')
+      var picList = (res && res.corporatePics && res.corporatePics.split(',')) || []
       picList.forEach((item) => {
         res.corporateList.push({imgUrl: util.getImageUrl(item)})
       })
@@ -55,7 +55,7 @@ Page({
   toBook: function() {
     // 这里是把别人分享带过来的referID带到下一页去，如果走到报名就带给后台
     var refer = ''
-    if (this.data.referID & (this.data.referID != this.data.jobInfo.referID)) {
+    if (this.data.referID && (this.data.referID != this.data.jobInfo.referID)) {
       var refer = '&referID=' + this.data.referID
     }
     wx.navigateTo({

@@ -2,7 +2,7 @@
 <view class="hot-container flex_column flex_align_center">
   <view class="navbar color333 fontMedium" style='height: {{height + 46}}px; padding-top: {{height}}px;'>
   <image src="../../../resources/images/nav_back.png" class="navbackImg" mode="" bind:tap="goback"/>
-  岗位详情</view>
+  我推荐入职</view>
   <view class="cont-contain flex_column">
     <view class="tabs">
         <view class="searchBy">
@@ -15,7 +15,7 @@
             <view animation="{{animationData}}"  class="barSelected"></view>
         </view>
     </view>
-    <view class="myJobList">
+    <scroll-view class="myJobList" style="height: {{scrollHeight}}px;" scroll-y lower-threshold="0" bindscrolltolower="togetMoreData">
       <view wx:for="{{myJobList}}" wx:key="index" class="myJobItemWrap">
         <view class="myJobline1 flex_flex flex_justify_start">
           <!-- <image src="" mode=""/> -->
@@ -37,6 +37,7 @@
           <text class="f26 color333">公司：{{ item.corporate }}</text>
         </view>
       </view>
-    </view>
+      <view wx:if="{{ isTipsShow }}" style="width: 100%; height: 100rpx; line-height: 100rpx; text-align: center; font-size: 30rpx; color: #666;">{{ tipsWord }}</view>
+    </scroll-view>
   </view>
 </view>

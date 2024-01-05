@@ -8,7 +8,7 @@
       <view wx:for="{{storeList}}" wx:key="index" data-storeId="{{item.id}}" class="storeItem">
         <view class="storeLine1 flex_flex flex_justify_between flex_align_center">
           <view class="f32 fontMedium color333">{{ item.name }}</view>
-          <view class="f26 color999 flex_flex flex_align_center"><image src="../../../resources/images/nearAddr.png" style="width: 16rpx;height: 19rpx;margin-right: 7rpx" />{{ item.distanceKm }}km</view>
+          <view wx:if="{{ item.distanceKm > 0 }}" class="f26 color999 flex_flex flex_align_center"><image src="../../../resources/images/nearAddr.png" style="width: 16rpx;height: 19rpx;margin-right: 7rpx" />{{ item.distanceKm }}km</view>
         </view>
         <view class="f26 color999">{{ item.addr }}</view>
         <view class="storeLine3 flex_flex flex_justify_between flex_align_center">
@@ -26,6 +26,7 @@
           <view class="sotreBtn f24 colorfff fontMedium" data-tel="{{item.tel}}" bind:tap="toMakePhone">立即联系</view>
         </view>
       </view>
+      <view wx:if="{{ isTipsShow }}" style="width: 100%; height: 100rpx; line-height: 100rpx; text-align: center; font-size: 30rpx; color: #666;">{{ tipsWord }}</view>
     </view>
     <view wx:else class="tips">
     精彩内容即将上线，敬请期待！

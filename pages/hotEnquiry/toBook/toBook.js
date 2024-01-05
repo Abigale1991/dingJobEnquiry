@@ -83,6 +83,7 @@ Page({
     //   birthday: "2001-01-10", 
     //   token: "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJlY2IyMGI2NTRhZTU0YzQ1YmIzYWM4MzY2YTA0NGJiZSIsInN1YiI6IldFQ0hBVC5lbXBsb3lfdGVzdCIsImlzcyI6InNnIiwiaWF0IjoxNjk2NzM1MDY3LCJleHAiOjE2OTczMzk4Njd9.nJkTwgP94hCRMoBgpv3Z-BKoLYJ5FhAxbLSsk9kCz9Y"
     // }
+    console.log('apply_job去报名的参数：', data)
     util.dingRequest('apply_job', 'POST', data).then((res) => {
       console.log('apply_job接到参数：', res)
       if (res && res.success == '1') {
